@@ -1,0 +1,11 @@
+{
+  "name": "7d2d-daycalc",
+  "version": "1.0.0",
+  "description": "Calculates how many days until you die in 72D2",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
