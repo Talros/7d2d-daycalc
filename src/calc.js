@@ -23,7 +23,7 @@
     function submitCalculation(event) {
       event.preventDefault();
       var currentDay = currentDayEl.value;
-      currentDay = parseInt(currentDay);
+      currentDay = parseInt(currentDay, 10);
       if (!currentDay) daysLeftEl.innerText = "Enter the current day and click Calculate.";
       var message = displayMessage(remainingDays(currentDay));
       daysLeftEl.innerText = message;
