@@ -1,21 +1,49 @@
 <html>
-  <head> 
+  <head>
+    <title>7D2D - Day Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+
     <script src="src/calc.js" type="text/javascript"></script>
     <link href="src/index.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div class="calc-content">
-        <h1>7 Days To Die: Day Calculator</h1>
-        <div id="controls">
-          <label for="current-day">What is the current day?</label>
-          <input id="current-day" type="text">
-          <button id="btn-calculate">Calculate</button>
-        </div>
-        <div id="display-result">
-          <h3 id="days-left"></h3>
+
+    <main>
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <h2>7D2D &#8212; Day Calculator</h2>
+          </div>
+          <div class="card-content">
+            <form onsubmit="" id="form-calculate">
+              <div id="input" class="user-input">
+                <input id="current-day" type="number" placeholder="What day are you on?">
+              </div>
+              <div class="results">
+                <div class="result">
+                  <label for="result-days-left">Days Left</label>
+                  <span class="dots"></span>
+                  <span id="result-days-left" class="">N/A</span>
+                </div>
+                <p id="result-message"></p>
+              </div>
+              <div class="card-action">
+                <button id="btn-reset" class="card-button">Reset</button>
+                <button id="btn-calculate" type="submit" class="card-button pulse">Calculate</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
+
+    <footer>
+      <a id="lnk_wiki" href="http://7daystodie.gamepedia.com/7_Days_to_Die_Wiki" target="_blank" title="7D2D Wiki">Wiki</a>
+      <a id="lnk_github" href="https://github.com/Talros/7d2d-daycalc" target="_blank" title="GitHub">GitHub</a>
+    </footer>
+    
   </body>
 </html>
