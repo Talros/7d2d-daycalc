@@ -2,33 +2,43 @@
 (function() {
   document.addEventListener("DOMContentLoaded", function() {
     var currentDayEl = document.getElementById('current-day');
-    var formCalcEl = document.getElementById('form-calculate');
-    var daysLeftEl = document.getElementById('days-left');
+    var calcBtnEl = document.getElementById('btn-calculate');
+    var resetEl = document.getElementById('btn-reset');
+    var daysLeftEl = document.getElementById('result-days-left');
+    var messageEl = document.getElementById('result-message');
 
-    function remainingDays(day) {
-      if (day < 1) return day;
-      return 7 - (day % 7);
-    }
+    calcBtnEl.addEventListener('click', function(e) {
+      var currentDay = currentDayEl.value,
+          currentDayElClasses,
+          message,
+          messageElClasses,
+          daysLeft;
 
-    function displayMessage(daysLeft) {
-      if (daysLeft < 1 || Number.isNaN(daysLeft)) {
-        return "Please enter a positive number above zero.";
+      currentDay = parseInt(currentDay);
+
+      if (!currentDay) {
+        daysLeft = "N/A";
+        message = "ERROR: Enter the current day and click Calculate.";
+        messageElClasses = "";
+        currentDayElClasses = "INVALID";
+      } else {
+        daysLeft = 7 - (currentDay % 7)
+        message = daysLeft === 7 ? "It's tonight! GET READY!" : "";
+        messageElClasses = "GETREADY";
+        currentDayElClasses = "";
       }
+      
+      currentDayEl.className = currentDayElClasses;
+      daysLeftEl.innerText = daysLeft;
+      messageEl.innerText = message;
+      messageEl.className = messageElClasses;
+    });
 
-      if (daysLeft >= 7) return "It's tonight! GET READY!";
+    resetEl.addEventListener('click', function(e) {
+      currentDayEl.value = "";
+      daysLeftEl.innerText = "N/A";
+      messageEl.innerText = "";
+    });
 
-      return "Days Left: " + daysLeft;
-    }
-
-    function submitCalculation(event) {
-      event.preventDefault();
-      var currentDay = currentDayEl.value;
-      currentDay = parseInt(currentDay, 10);
-      if (!currentDay) daysLeftEl.innerText = "Enter the current day and click Calculate.";
-      var message = displayMessage(remainingDays(currentDay));
-      daysLeftEl.innerText = message;
-    }
-
-    formCalcEl.onsubmit = submitCalculation;
   });
 })()
